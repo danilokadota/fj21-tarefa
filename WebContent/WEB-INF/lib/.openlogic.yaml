@@ -1,0 +1,18 @@
+--- 
+name: Spring 3.0.5 Binary
+platform_id: all
+platform_version: all
+distribution_file_uuid_string: openlogic-spring-3.0.5-all-bin-1
+platform_vendor: all
+description: Spring 3.0.5 Binary
+platform_arch: all
+distribution_file_uuid: 990bea54c9e0a9aa82597e65f8c10a666eeb799e0021f549bd34be6ff6f3dce9
+distribution_version: 1
+distribution_flavor: ""
+distribution_raw_file: 3.0.5/spring-framework-3.0.5.RELEASE.zip
+notify: "yes"
+package_version: 3.0.5
+package_id: spring
+release_date: "2011-04-26"
+distribution_notes: ""
+distribution_type: bin
