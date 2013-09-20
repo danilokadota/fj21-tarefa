@@ -69,10 +69,11 @@ public class TarefaDao {
 				tarefa.setId(id);
 				tarefa.setDescricao(rs.getString("descricao"));
 				tarefa.setFinalizado(rs.getBoolean("finalizado"));
-
-				Calendar data = Calendar.getInstance();
-				data.setTime(rs.getDate("dataFinalizacao"));
-				tarefa.setDataFinalizacao(data);
+				if (rs.getDate("dataFinalizacao") != null) {
+					Calendar data = Calendar.getInstance();
+					data.setTime(rs.getDate("dataFinalizacao"));
+					tarefa.setDataFinalizacao(data);
+				}
 			}
 			rs.close();
 			stmt.close();
