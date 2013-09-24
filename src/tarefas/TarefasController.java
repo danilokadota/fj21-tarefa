@@ -4,16 +4,18 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@Transactional
 public class TarefasController {
 	
 	@Autowired
-	private TarefaDao dao;
-
+	private JpaTarefaDao dao;
+	
 	@RequestMapping("/novaTarefa")
 	public String form() {
 		return "tarefa/formulario";
@@ -30,7 +32,7 @@ public class TarefasController {
 
 	@RequestMapping("listaTarefas")
 	public String lista(Model model) {
-		model.addAttribute("tarefas", dao.getLista());
+		model.addAttribute("tarefa", dao.lista());
 		return "tarefa/lista";
 	}
 

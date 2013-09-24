@@ -18,9 +18,9 @@ public class UsuarioDao {
 
 	public boolean existeUsuario(Usuario usuario) {
 		String sql = "select * from usuario where login = ? and senha = ?";
-
+		PreparedStatement stmt = null;
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 			stmt.setString(1, usuario.getLogin());
 			stmt.setString(2, usuario.getSenha());
@@ -35,14 +35,23 @@ public class UsuarioDao {
 			return existe;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		}finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
+	
+	
 	public void adiciona(Usuario usuario) {
 		String sql = "insert into usuario (nome,login,senha) values (?,?,?)";
-
+			PreparedStatement stmt = null;
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getLogin());
@@ -52,6 +61,13 @@ public class UsuarioDao {
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		}finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
